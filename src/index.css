@@ -1,11 +1,12 @@
 :root {
-  --bg: #06070a;
-  --bg-raise: #0c0e14;
-  --ink: #eef1f6;
-  --ink-dim: #8b93a3;
-  --line: rgba(238, 241, 246, 0.09);
-  --accent: #5eead4;
-  --accent-2: #818cf8;
+  --bg: #050505;
+  --bg-raise: #0b0d10;
+  --ink: #f5f2ec;
+  --ink-dim: #969ca8;
+  --line: rgba(245, 242, 236, 0.1);
+  --cyan: #22e0ff;
+  --acid: #b4f542;
+  --violet: #8b5cf6;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 }
@@ -25,8 +26,20 @@ body {
   overflow-x: hidden;
 }
 
+/* faint command-center grid over everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: linear-gradient(rgba(245, 242, 236, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 242, 236, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
 ::selection {
-  background: var(--accent);
+  background: var(--acid);
   color: var(--bg);
 }
 
@@ -38,31 +51,68 @@ a {
 .mono {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--cyan);
 }
 
 .section {
   position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 9rem 2rem;
+  padding: 8rem 2rem;
 }
 
 .section-head {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .section-head h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  margin-top: 0.75rem;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-top: 0.9rem;
+  text-transform: uppercase;
 }
 
 .grid-line {
   border-top: 1px solid var(--line);
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.6rem;
+  border-radius: 2px;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-solid {
+  background: var(--acid);
+  color: var(--bg);
+}
+
+.btn-solid:hover {
+  box-shadow: 0 0 24px rgba(180, 245, 66, 0.35);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -70,6 +120,7 @@ a {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

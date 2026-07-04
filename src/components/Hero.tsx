@@ -1,28 +1,34 @@
 import { lazy, Suspense } from 'react'
+import { hero } from '../data/content'
+import { useDecode } from './useDecode'
 import './Hero.css'
 
 const ParticleField = lazy(() => import('./ParticleField'))
 
 export default function Hero() {
+  const line1 = useDecode(hero.headline[0], 300)
+  const line2 = useDecode(hero.headline[1], 900)
+
   return (
     <header className="hero">
       <Suspense fallback={null}>
         <ParticleField />
       </Suspense>
       <div className="hero-inner">
-        <p className="mono">bitfliptech.ai — est. 2009, reborn ai-native</p>
-        <h1>
-          Chart the <span className="hero-grad">Digital Frontier</span>
+        <p className="mono">{hero.eyebrow}</p>
+        <h1 aria-label={hero.headline.join(' ')}>
+          <span aria-hidden="true">{line1 || ' '}</span>
+          <span aria-hidden="true" className="hero-grad">
+            {line2 || ' '}
+          </span>
         </h1>
-        <p className="hero-sub">
-          Strategic digital design and AI storytelling for authentic connection.
-        </p>
+        <p className="hero-sub">{hero.sub}</p>
         <div className="hero-cta">
-          <a href="#timeline" className="btn btn-solid">
-            17 years in 60 seconds
+          <a href={hero.ctaPrimary.href} className="btn btn-solid">
+            {hero.ctaPrimary.label}
           </a>
-          <a href="#contact" className="btn btn-ghost">
-            Start a project
+          <a href={hero.ctaSecondary.href} className="btn btn-ghost">
+            {hero.ctaSecondary.label}
           </a>
         </div>
       </div>

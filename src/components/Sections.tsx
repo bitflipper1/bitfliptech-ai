@@ -1,12 +1,12 @@
-import { services, process, contact } from '../data/content'
+import { services, process, contact, story } from '../data/content'
 import './Sections.css'
 
 export function Services() {
   return (
     <section id="services" className="section grid-line">
       <div className="section-head">
-        <p className="mono">What we do</p>
-        <h2>We ♥ well-designed apps and AI.</h2>
+        <p className="mono">What BitFlip does</p>
+        <h2>Four ways in</h2>
       </div>
       <div className="svc-grid">
         {services.map((s) => (
@@ -17,6 +17,16 @@ export function Services() {
           </article>
         ))}
       </div>
+    </section>
+  )
+}
+
+export function StoryIntro() {
+  return (
+    <section id="story" className="section grid-line story">
+      <p className="mono">{story.eyebrow}</p>
+      <h2>{story.headline}</h2>
+      <p className="story-intro">{story.intro}</p>
     </section>
   )
 }
@@ -45,12 +55,17 @@ export function Contact() {
   return (
     <section id="contact" className="section grid-line contact">
       <p className="mono">Next chapter</p>
-      <h2>
-        Your brand belongs on <span className="contact-grad">the timeline.</span>
-      </h2>
+      <h2>{contact.headline}</h2>
+      <p className="contact-sub">{contact.sub}</p>
       <div className="contact-links">
         <a href={`mailto:${contact.email}`} className="btn btn-solid">
           {contact.email}
+        </a>
+        <a
+          href={`mailto:${contact.email}?subject=${encodeURIComponent(contact.bookSubject)}`}
+          className="btn btn-ghost"
+        >
+          Book a working session
         </a>
         <a href={`tel:${contact.phone.replace(/-/g, '')}`} className="btn btn-ghost">
           {contact.phone}

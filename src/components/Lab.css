@@ -1,0 +1,109 @@
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.lab-card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2rem;
+  background: linear-gradient(160deg, var(--bg-raise), var(--bg) 60%);
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+
+.lab-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+      120% 90% at 100% 0%,
+      rgba(139, 92, 246, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(120% 90% at 0% 100%, rgba(34, 224, 255, 0.14), transparent 55%);
+}
+
+.lab-card:hover {
+  border-color: rgba(34, 224, 255, 0.45);
+  transform: translateY(-4px);
+}
+
+.lab-card:hover::before {
+  opacity: 1;
+}
+
+.lab-tag {
+  color: var(--acid);
+}
+
+.lab-card h3 {
+  position: relative;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0.9rem 0 0.7rem;
+}
+
+/* glitch on hover */
+.lab-card:hover h3::before,
+.lab-card:hover h3::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.lab-card:hover h3::before {
+  color: var(--cyan);
+  clip-path: inset(15% 0 60% 0);
+  animation: glitch 0.5s steps(2, end) infinite;
+}
+
+.lab-card:hover h3::after {
+  color: var(--violet);
+  clip-path: inset(60% 0 10% 0);
+  animation: glitch 0.5s steps(2, end) infinite reverse;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.lab-blurb {
+  position: relative;
+  color: var(--ink-dim);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  min-height: 3.2em;
+}
+
+.lab-cta {
+  display: inline-block;
+  margin-top: 1.4rem;
+  color: var(--ink-dim);
+  transition: color 0.2s ease;
+}
+
+.lab-card:hover .lab-cta {
+  color: var(--acid);
+}

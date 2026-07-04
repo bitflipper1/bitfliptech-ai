@@ -28,7 +28,7 @@ export default function Timeline() {
   return (
     <section id="timeline" className="section" ref={ref}>
       <div className="section-head">
-        <p className="mono">The story so far</p>
+        <p className="mono">The receipts</p>
         <h2>2009 → bitfliptech.ai</h2>
       </div>
       <div className="timeline-rail">

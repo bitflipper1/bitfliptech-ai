@@ -76,8 +76,8 @@ function Particles() {
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(99, 99) },
       uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-      uColorA: { value: new THREE.Color('#5a6b9c') },
-      uColorB: { value: new THREE.Color('#5eead4') },
+      uColorA: { value: new THREE.Color('#4c4f8f') },
+      uColorB: { value: new THREE.Color('#22e0ff') },
     }),
     []
   )
@@ -114,11 +114,13 @@ function Particles() {
 }
 
 export default function ParticleField() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return (
     <Canvas
       camera={{ position: [0, 0, 9], fov: 50 }}
       dpr={[1, 2]}
       gl={{ antialias: false, alpha: true }}
+      frameloop={reducedMotion ? 'demand' : 'always'}
       style={{ position: 'absolute', inset: 0 }}
     >
       <Particles />

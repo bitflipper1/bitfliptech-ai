@@ -10,7 +10,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(var(--line), var(--accent));
+  background: linear-gradient(var(--line), var(--cyan));
 }
 
 .era {
@@ -33,13 +33,13 @@
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--cyan);
   background: var(--bg);
 }
 
 .era-now .era-marker {
-  background: var(--accent);
-  box-shadow: 0 0 18px var(--accent);
+  background: var(--cyan);
+  box-shadow: 0 0 18px var(--cyan);
 }
 
 .era h3 {
@@ -50,7 +50,7 @@
 }
 
 .era-now h3 {
-  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  background: linear-gradient(100deg, var(--cyan), var(--violet));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -81,6 +81,6 @@
 }
 
 .era-now .era-clients li {
-  color: var(--accent);
-  border-color: rgba(94, 234, 212, 0.4);
+  color: var(--cyan);
+  border-color: rgba(180, 245, 66, 0.5);
 }

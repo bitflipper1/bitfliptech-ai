@@ -1,52 +1,84 @@
+export const hero = {
+  eyebrow: 'bitfliptech.ai — human-centered ai for complex systems',
+  headline: ['Flip the interface.', 'Change the system.'],
+  sub: 'BitFlipTech designs intelligent interfaces, automation prototypes, design systems, and human-centered AI experiences for complex industrial, healthcare, defense, and enterprise workflows.',
+  ctaPrimary: { label: 'Start a project', href: '#contact' },
+  ctaSecondary: { label: 'See prototypes', href: '#lab' },
+}
+
 export const services = [
   {
-    title: 'Omnichannel Design',
-    blurb:
-      'Fluid, highly responsive digital experiences across web, mobile, tablet, and social platforms.',
     tag: '01',
+    title: 'AI Product Strategy',
+    blurb: 'Turn fuzzy AI ideas into usable workflows, prototypes, and product direction.',
   },
   {
-    title: 'Digital Storytelling & AI',
-    blurb:
-      'Advanced AI tools and creative digital design that build authentic audience engagement.',
     tag: '02',
-  },
-  {
-    title: 'Digital Trust',
-    blurb: 'Security and platform reliability protection, built in from day one.',
-    tag: '03',
-  },
-  {
-    title: 'Actionable Insights',
+    title: 'UX for Complex Systems',
     blurb:
-      'Data analytics that translate complex metrics into clear, actionable data insights.',
-    tag: '04',
+      'Dashboards, command centers, industrial tools, safety interfaces, and data-heavy apps.',
   },
   {
-    title: 'Marketing Services',
-    blurb: 'Review generation and customer feedback automation that compounds.',
-    tag: '05',
+    tag: '03',
+    title: 'Design Systems + Accessibility',
+    blurb:
+      'Scalable components, WCAG-minded patterns, and systems that help teams move faster.',
+  },
+  {
+    tag: '04',
+    title: 'Agentic Automation Prototypes',
+    blurb: 'AI assistants, workflow copilots, internal tools, and proof-of-concepts.',
   },
 ]
 
-export const process = [
+export const lab = [
   {
-    step: 'Strategic Discovery',
-    blurb: 'We map your audience, goals, and edges before a pixel moves.',
+    title: 'AI Job Automation Tool',
+    tag: 'agentic workflow',
+    blurb: 'An agent pipeline that turns repetitive job tasks into supervised automations.',
   },
   {
-    step: 'Cross-Platform Experience',
-    blurb: 'One story, every surface — designed to feel native on each.',
+    title: 'Industrial Safety Copilot',
+    tag: 'safety-critical ux',
+    blurb: 'An AI assistant concept for high-risk environments where confusion costs lives.',
   },
   {
-    step: 'Bespoke Product Engineering',
-    blurb: 'Hand-built, AI-accelerated. No templates, no bloat.',
+    title: 'Command + Control Interface',
+    tag: 'command center',
+    blurb: 'Operational awareness concepts: maps, feeds, alerts, and decision support.',
   },
   {
-    step: 'Measurable Evolution',
-    blurb: 'Ship, measure, learn, evolve. The launch is the starting line.',
+    title: 'Real Estate Buyer Guide',
+    tag: 'consumer ai',
+    blurb: 'A conversational prototype that walks buyers through complex decisions.',
+  },
+  {
+    title: 'Accessibility Pattern Library',
+    tag: 'design system',
+    blurb: 'WCAG-minded components, focus states, and reduced-motion patterns that ship.',
+  },
+  {
+    title: 'Sensor Dashboard Concepts',
+    tag: 'data visualization',
+    blurb: 'Live telemetry, anomaly surfacing, and dense data made legible.',
   },
 ]
+
+export const capabilities = [
+  'UX Design',
+  'AI Prototyping',
+  'Automation',
+  'Design Systems',
+  'Data Visualization',
+  'Accessibility',
+]
+
+export const story = {
+  eyebrow: 'From web agency to AI design lab',
+  headline: 'BitFlip started with websites. Now it builds intelligent digital systems.',
+  intro:
+    'Seventeen years of shipping real products for real businesses — agency founder, enterprise UX leader at Honeywell, now AI-first designer. The craft compounds: design for the user, respect the system, earn the trust.',
+}
 
 export interface TimelineEra {
   years: string
@@ -60,7 +92,7 @@ export const timeline: TimelineEra[] = [
     years: '2009–2011',
     title: 'The First Flip',
     blurb:
-      'It started with hand-coded sites for Charlotte businesses — restaurants, venues, and local legends. Every pixel earned.',
+      'Hand-coded sites for Charlotte businesses — restaurants, venues, and local legends. Every pixel earned.',
     clients: [
       'icatchbiz',
       'Fitzgeralds',
@@ -74,7 +106,7 @@ export const timeline: TimelineEra[] = [
     years: '2012–2014',
     title: 'The Hospitality Years',
     blurb:
-      "Charlotte's dining and nightlife scene came online, and we built the front door — brands, menus, bookings, buzz.",
+      "Charlotte's dining and nightlife scene came online, and BitFlip built the front door — brands, menus, bookings, buzz.",
     clients: [
       'Dick Stevens',
       'Duckworth Grill & Taphouse',
@@ -93,7 +125,7 @@ export const timeline: TimelineEra[] = [
   },
   {
     years: '2018–2020',
-    title: 'Bitflip Goes Product',
+    title: 'BitFlip Goes Product',
     blurb:
       'From websites to products — UX research, SaaS dashboards, and data-heavy platforms under the Bitflip banner.',
     clients: [
@@ -107,27 +139,48 @@ export const timeline: TimelineEra[] = [
   },
   {
     years: '2021–2024',
-    title: 'Design Meets the Machine',
+    title: 'Enterprise Systems',
     blurb:
-      'Design-to-code workflows, AI tooling, and prototyping pipelines. The studio became a lab.',
-    clients: ['Design Matt-ers', 'BofA concepts', 'Cursor design-to-code', 'AI prototyping'],
+      'UX leadership inside complex industry — industrial workflows, safety-critical screens, design systems at scale.',
+    clients: ['Honeywell UX', 'Design systems', 'Design-to-code pipelines', 'CPCC teaching'],
   },
   {
     years: '2025 →',
     title: 'bitfliptech.ai',
     blurb:
-      'Seventeen years of craft, reborn AI-native. Strategic digital design and AI storytelling for authentic connection.',
+      'The AI design lab. Human-centered AI for complex systems — prototyped fast, designed for trust, built to ship.',
     clients: ['You, next.'],
   },
 ]
 
+export const process = [
+  {
+    step: 'Decode the system',
+    blurb: 'Understand users, workflows, constraints, risks, and messy edge cases.',
+  },
+  {
+    step: 'Prototype the future',
+    blurb: 'Use AI, Figma, code, and rapid concepting to make the idea tangible.',
+  },
+  {
+    step: 'Design for trust',
+    blurb: 'Make the interface usable, explainable, accessible, and safe.',
+  },
+  {
+    step: 'Ship the signal',
+    blurb: 'Create the visual system, interaction model, content, and launch path.',
+  },
+]
+
 export const contact = {
+  headline: 'Need an AI-first UX partner?',
+  sub: "Let's design something that makes complex work feel simple.",
   phone: '704-293-5049',
   email: 'mattmcg@bitfliptech.com',
+  bookSubject: 'Working session — bitfliptech.ai',
   socials: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/bitfliptech' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mattmcglothlin' },
     { label: 'X', href: 'https://x.com/bitfliptech' },
     { label: 'Instagram', href: 'https://www.instagram.com/bitfliptech' },
-    { label: 'Facebook', href: 'https://www.facebook.com/bitfliptech' },
   ],
 }
