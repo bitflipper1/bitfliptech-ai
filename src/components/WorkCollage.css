@@ -1,0 +1,153 @@
+.collage {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  padding: 6rem 0 0;
+}
+
+.collage-head {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+}
+
+.collage-head h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-top: 0.9rem;
+}
+
+.collage-stage {
+  position: relative;
+  height: 620px;
+  perspective: 1100px;
+  overflow: hidden;
+}
+
+.collage-wall {
+  --tilt-x: 12deg;
+  --tilt-y: 0deg;
+  position: absolute;
+  inset: -14% -6%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(-2.5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease-out;
+}
+
+.collage-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  will-change: transform;
+}
+
+/* each column loops at its own speed; middle column drifts the other way */
+.collage-col-0 {
+  animation: drift-up 52s linear infinite;
+}
+
+.collage-col-1 {
+  animation: drift-down 64s linear infinite;
+}
+
+.collage-col-2 {
+  animation: drift-up 58s linear infinite;
+}
+
+@keyframes drift-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes drift-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.collage-item {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-raise);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collage-item img {
+  display: block;
+  width: 100%;
+  filter: grayscale(0.7) contrast(1.05) brightness(0.85);
+  transition: filter 0.35s ease;
+}
+
+.collage-item:hover {
+  transform: scale(1.04) translateZ(24px);
+  border-color: rgba(34, 224, 255, 0.6);
+  box-shadow: 0 12px 48px rgba(34, 224, 255, 0.18);
+  z-index: 2;
+}
+
+.collage-item:hover img {
+  filter: none;
+}
+
+.collage-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.6rem;
+  color: var(--ink);
+  background: linear-gradient(transparent, rgba(5, 5, 5, 0.9));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.collage-item:hover figcaption {
+  opacity: 1;
+}
+
+/* edge fades + scanlines over the stage */
+.collage-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(var(--bg), transparent 18%, transparent 82%, var(--bg)),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(5, 5, 5, 0.14) 3px 4px);
+}
+
+@media (max-width: 640px) {
+  .collage-stage {
+    height: 460px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collage-col-0,
+  .collage-col-1,
+  .collage-col-2 {
+    animation: none;
+  }
+  .collage-col-1 {
+    transform: translateY(-25%);
+  }
+  .collage-wall {
+    transform: rotateX(6deg) rotateZ(-1deg);
+    transition: none;
+  }
+}
