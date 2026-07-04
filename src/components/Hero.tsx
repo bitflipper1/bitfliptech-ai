@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { Link } from 'react-router-dom'
 import { hero } from '../data/content'
 import { useDecode } from './useDecode'
 import './Hero.css'
@@ -24,12 +25,12 @@ export default function Hero() {
         </h1>
         <p className="hero-sub">{hero.sub}</p>
         <div className="hero-cta">
-          <a href={hero.ctaPrimary.href} className="btn btn-solid">
+          <Link to={hero.ctaPrimary.href} className="btn btn-solid">
             {hero.ctaPrimary.label}
-          </a>
-          <a href={hero.ctaSecondary.href} className="btn btn-ghost">
+          </Link>
+          <Link to={hero.ctaSecondary.href} className="btn btn-ghost">
             {hero.ctaSecondary.label}
-          </a>
+          </Link>
         </div>
       </div>
       <div className="hero-scroll mono">scroll</div>

@@ -44,6 +44,12 @@ export default function Timeline() {
             <p className="mono era-years">{era.years}</p>
             <h3>{era.title}</h3>
             <p className="era-blurb">{era.blurb}</p>
+            {era.image && (
+              <figure className="era-figure">
+                <img src={era.image.src} alt={era.image.alt} loading="lazy" />
+                <figcaption className="mono">{era.image.alt}</figcaption>
+              </figure>
+            )}
             <ul className="era-clients">
               {era.clients.map((c) => (
                 <li key={c}>{c}</li>

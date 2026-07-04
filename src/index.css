@@ -81,6 +81,11 @@ a {
   border-top: 1px solid var(--line);
 }
 
+/* pages without a full-bleed hero clear the fixed nav */
+.page-top {
+  padding-top: 4rem;
+}
+
 .btn {
   font-family: var(--font-mono);
   font-size: 0.8rem;

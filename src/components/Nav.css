@@ -15,14 +15,13 @@
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.1em;
   font-weight: 500;
-}
-
-.nav-bit {
-  color: var(--acid);
 }
 
 .nav-links {
@@ -41,6 +40,10 @@
 
 .nav-links a:hover {
   color: var(--cyan);
+}
+
+.nav-links a.nav-active {
+  color: var(--acid);
 }
 
 @media (max-width: 640px) {

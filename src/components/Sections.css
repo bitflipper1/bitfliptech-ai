@@ -31,8 +31,46 @@
   font-size: 0.95rem;
 }
 
+.svc-details {
+  list-style: none;
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.svc-details li {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.svc-details li::before {
+  content: '01';
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--acid);
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+.svc-more {
+  margin-top: 2rem;
+}
+
+.svc-more a:hover {
+  color: var(--acid);
+}
+
 .story {
   text-align: center;
+}
+
+.story-teaching {
+  margin-top: 1rem;
+  font-size: 0.95rem;
 }
 
 .story h2 {
@@ -100,6 +138,26 @@
 .contact-links .btn-solid {
   text-transform: none;
   letter-spacing: 0.02em;
+}
+
+.contact-links-alt {
+  margin-top: 3rem;
+  gap: 2rem;
+}
+
+.contact-links-alt a {
+  color: var(--ink-dim);
+  transition: color 0.2s ease;
+}
+
+.contact-links-alt a:hover {
+  color: var(--cyan);
+}
+
+.footer-global {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
 }
 
 .footer {

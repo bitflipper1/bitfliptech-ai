@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
 import { services, process, contact, story } from '../data/content'
+import ContactForm from './ContactForm'
 import './Sections.css'
 
-export function Services() {
+export function Services({ detailed = false }: { detailed?: boolean }) {
   return (
     <section id="services" className="section grid-line">
       <div className="section-head">
@@ -14,9 +16,23 @@ export function Services() {
             <p className="mono">{s.tag}</p>
             <h3>{s.title}</h3>
             <p>{s.blurb}</p>
+            {detailed && (
+              <ul className="svc-details">
+                {s.details.map((d) => (
+                  <li key={d}>{d}</li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </div>
+      {!detailed && (
+        <p className="svc-more">
+          <Link to="/services" className="mono">
+            full service breakdown →
+          </Link>
+        </p>
+      )}
     </section>
   )
 }
@@ -27,6 +43,7 @@ export function StoryIntro() {
       <p className="mono">{story.eyebrow}</p>
       <h2>{story.headline}</h2>
       <p className="story-intro">{story.intro}</p>
+      <p className="story-intro story-teaching">{story.teaching}</p>
     </section>
   )
 }
@@ -51,36 +68,48 @@ export function Process() {
   )
 }
 
-export function Contact() {
+export function CtaBanner() {
   return (
-    <section id="contact" className="section grid-line contact">
+    <section className="section grid-line contact">
       <p className="mono">Next chapter</p>
       <h2>{contact.headline}</h2>
       <p className="contact-sub">{contact.sub}</p>
       <div className="contact-links">
-        <a href={`mailto:${contact.email}`} className="btn btn-solid">
-          {contact.email}
-        </a>
+        <Link to="/contact" className="btn btn-solid">
+          Start a project
+        </Link>
         <a
           href={`mailto:${contact.email}?subject=${encodeURIComponent(contact.bookSubject)}`}
           className="btn btn-ghost"
         >
           Book a working session
         </a>
-        <a href={`tel:${contact.phone.replace(/-/g, '')}`} className="btn btn-ghost">
+      </div>
+    </section>
+  )
+}
+
+export function Contact() {
+  return (
+    <section id="contact" className="section contact">
+      <p className="mono">Project inquiry / consulting / collaboration</p>
+      <h2>{contact.headline}</h2>
+      <p className="contact-sub">{contact.sub}</p>
+      <ContactForm />
+      <div className="contact-links contact-links-alt">
+        <a href={`mailto:${contact.email}`} className="mono">
+          {contact.email}
+        </a>
+        <a href={`tel:${contact.phone.replace(/-/g, '')}`} className="mono">
           {contact.phone}
         </a>
+        <a
+          href={`mailto:${contact.email}?subject=${encodeURIComponent(contact.bookSubject)}`}
+          className="mono"
+        >
+          Book a working session
+        </a>
       </div>
-      <footer className="footer">
-        <p className="mono footer-copy">© {new Date().getFullYear()} bitfliptech.ai</p>
-        <nav className="footer-socials">
-          {contact.socials.map((s) => (
-            <a key={s.label} href={s.href} target="_blank" rel="noreferrer">
-              {s.label}
-            </a>
-          ))}
-        </nav>
-      </footer>
     </section>
   )
 }

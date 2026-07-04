@@ -2,8 +2,8 @@ export const hero = {
   eyebrow: 'bitfliptech.ai — human-centered ai for complex systems',
   headline: ['Flip the interface.', 'Change the system.'],
   sub: 'BitFlipTech designs intelligent interfaces, automation prototypes, design systems, and human-centered AI experiences for complex industrial, healthcare, defense, and enterprise workflows.',
-  ctaPrimary: { label: 'Start a project', href: '#contact' },
-  ctaSecondary: { label: 'See prototypes', href: '#lab' },
+  ctaPrimary: { label: 'Start a project', href: '/contact' },
+  ctaSecondary: { label: 'See prototypes', href: '/lab' },
 }
 
 export const services = [
@@ -11,23 +11,47 @@ export const services = [
     tag: '01',
     title: 'AI Product Strategy',
     blurb: 'Turn fuzzy AI ideas into usable workflows, prototypes, and product direction.',
+    details: [
+      'AI opportunity mapping against real user workflows',
+      'Concept sprints: from whiteboard to clickable in days',
+      'Build / buy / fine-tune guidance grounded in UX',
+      'Roadmaps that survive contact with engineering',
+    ],
   },
   {
     tag: '02',
     title: 'UX for Complex Systems',
     blurb:
       'Dashboards, command centers, industrial tools, safety interfaces, and data-heavy apps.',
+    details: [
+      'Information architecture for dense, high-stakes data',
+      'Alarm, alert, and escalation design that respects attention',
+      'Operator research: shadowing real users in real conditions',
+      'Interfaces tested against failure modes, not happy paths',
+    ],
   },
   {
     tag: '03',
     title: 'Design Systems + Accessibility',
     blurb:
       'Scalable components, WCAG-minded patterns, and systems that help teams move faster.',
+    details: [
+      'Token-based systems that scale across products',
+      'WCAG 2.1 AA audits and remediation patterns',
+      'Reduced-motion, keyboard, and screen-reader coverage',
+      'Documentation engineers actually use',
+    ],
   },
   {
     tag: '04',
     title: 'Agentic Automation Prototypes',
     blurb: 'AI assistants, workflow copilots, internal tools, and proof-of-concepts.',
+    details: [
+      'Working agent prototypes, not slideware',
+      'Human-in-the-loop patterns: review, approve, override',
+      'Copilots embedded in existing tools and workflows',
+      'Honest evaluation: where agents help, where they fail',
+    ],
   },
 ]
 
@@ -78,6 +102,8 @@ export const story = {
   headline: 'BitFlip started with websites. Now it builds intelligent digital systems.',
   intro:
     'Seventeen years of shipping real products for real businesses — agency founder, enterprise UX leader at Honeywell, now AI-first designer. The craft compounds: design for the user, respect the system, earn the trust.',
+  teaching:
+    'Along the way: teaching design at CPCC, leading design systems inside complex industry, and building the design-to-code pipelines that now power the lab.',
 }
 
 export interface TimelineEra {
@@ -85,6 +111,7 @@ export interface TimelineEra {
   title: string
   blurb: string
   clients: string[]
+  image?: { src: string; alt: string }
 }
 
 export const timeline: TimelineEra[] = [
@@ -101,6 +128,10 @@ export const timeline: TimelineEra[] = [
       'Charlotte Restaurant Week',
       'Comedy Zone',
     ],
+    image: {
+      src: '/work/fitzgeralds-2011.jpg',
+      alt: 'Fitzgeralds homepage design comp, 2011',
+    },
   },
   {
     years: '2012–2014',
@@ -115,6 +146,10 @@ export const timeline: TimelineEra[] = [
       'goodmortgage.com',
       'Hickory Tavern',
     ],
+    image: {
+      src: '/work/dickstevens-2014.jpg',
+      alt: 'Dick Stevens site cover design, 2014',
+    },
   },
   {
     years: '2015–2017',
@@ -122,6 +157,10 @@ export const timeline: TimelineEra[] = [
     blurb:
       'Bigger brands, bigger systems. Multi-location groups and franchises that needed design to work as hard as they did.',
     clients: ['FUEL Pizza', 'Lenox Salons', 'Hospitality Furniture Group', 'T1Visions'],
+    image: {
+      src: '/work/fuelpizza-2012.jpg',
+      alt: 'FUEL Pizza homepage design comp',
+    },
   },
   {
     years: '2018–2020',

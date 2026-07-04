@@ -1,0 +1,59 @@
+.logo {
+  display: block;
+}
+
+.logo-cell {
+  fill: var(--acid);
+}
+
+.logo-both {
+  fill: var(--ink);
+}
+
+/* b-only cells lit first half of the cycle, f-only second half */
+.logo-b {
+  animation: flip-b 4s steps(1, end) infinite;
+}
+
+.logo-f {
+  animation: flip-f 4s steps(1, end) infinite;
+}
+
+@keyframes flip-b {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flip-f {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  50%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-b {
+    opacity: 1;
+    animation: none;
+  }
+  .logo-f {
+    opacity: 0;
+    animation: none;
+  }
+}

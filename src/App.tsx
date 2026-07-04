@@ -1,11 +1,21 @@
 import { useEffect } from 'react'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Lab from './components/Lab'
-import Timeline from './components/Timeline'
-import CapabilityMap from './components/CapabilityMap'
-import { Services, StoryIntro, Process, Contact } from './components/Sections'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import LabPage from './pages/LabPage'
+import ServicesPage from './pages/ServicesPage'
+import About from './pages/About'
+import ContactPage from './pages/ContactPage'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 export default function App() {
   useEffect(() => {
@@ -24,18 +34,18 @@ export default function App() {
   }, [])
 
   return (
-    <div id="top">
+    <>
+      <ScrollToTop />
       <Nav />
-      <Hero />
-      <main>
-        <Services />
-        <StoryIntro />
-        <Timeline />
-        <Lab />
-        <CapabilityMap />
-        <Process />
-        <Contact />
-      </main>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lab" element={<LabPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <Footer />
+    </>
   )
 }
