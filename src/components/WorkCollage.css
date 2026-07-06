@@ -32,8 +32,8 @@
   position: absolute;
   inset: -14% -6%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
   transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(-2.5deg);
   transform-style: preserve-3d;
   transition: transform 0.35s ease-out;
@@ -46,17 +46,29 @@
   will-change: transform;
 }
 
-/* each column loops at its own speed; middle column drifts the other way */
+/* each column loops at its own speed; alternating columns drift opposite ways */
 .collage-col-0 {
-  animation: drift-up 52s linear infinite;
+  animation: drift-up 72s linear infinite;
 }
 
 .collage-col-1 {
-  animation: drift-down 64s linear infinite;
+  animation: drift-down 86s linear infinite;
 }
 
 .collage-col-2 {
-  animation: drift-up 58s linear infinite;
+  animation: drift-up 78s linear infinite;
+}
+
+.collage-col-3 {
+  animation: drift-down 68s linear infinite;
+}
+
+.collage-col-4 {
+  animation: drift-up 92s linear infinite;
+}
+
+.collage-col-5 {
+  animation: drift-down 76s linear infinite;
 }
 
 @keyframes drift-up {
@@ -131,19 +143,40 @@
     repeating-linear-gradient(0deg, transparent 0 3px, rgba(5, 5, 5, 0.14) 3px 4px);
 }
 
+@media (max-width: 1100px) {
+  .collage-wall {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .collage-col-4,
+  .collage-col-5 {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .collage-stage {
     height: 460px;
+  }
+  .collage-wall {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .collage-col-3 {
+    display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .collage-col-0,
   .collage-col-1,
-  .collage-col-2 {
+  .collage-col-2,
+  .collage-col-3,
+  .collage-col-4,
+  .collage-col-5 {
     animation: none;
   }
-  .collage-col-1 {
+  .collage-col-1,
+  .collage-col-3,
+  .collage-col-5 {
     transform: translateY(-25%);
   }
   .collage-wall {

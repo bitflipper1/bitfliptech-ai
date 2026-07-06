@@ -1,39 +1,12 @@
 import { useRef, type PointerEvent } from 'react'
+import { sites, type CollageSite } from '../data/collageSites'
 import './WorkCollage.css'
 
-interface Piece {
-  src: string
-  label: string
-}
+const COLUMNS = 6
 
-// Curated brand history from the Bitflip archive, distributed across
-// three drifting columns. Order within a column sets its visual rhythm.
-const columns: Piece[][] = [
-  [
-    { src: '/collage/bitflip2009.jpg', label: 'Bitflip, 2009' },
-    { src: '/collage/bitflipwebscreen.jpg', label: 'bitfliptech.com v1' },
-    { src: '/collage/bitflip_businesscard-09.jpg', label: 'Business cards' },
-    { src: '/collage/bitflipteamny3.jpg', label: 'The team, NYC' },
-    { src: '/collage/bitflipwebhowdoit.jpg', label: 'Process page' },
-    { src: '/collage/qcbftix.jpg', label: 'QC Beer Fest tickets' },
-  ],
-  [
-    { src: '/collage/bitfliplogo01-01-11.jpg', label: 'Logo, 2011' },
-    { src: '/collage/bitflip_dillgrille_home.jpg', label: 'Dilworth Grille' },
-    { src: '/collage/bitflipcar.jpg', label: 'The Bitflip car' },
-    { src: '/collage/bitflipweb2.jpg', label: 'Site redesign' },
-    { src: '/collage/bitflipusbflashdrive_custom_.jpg', label: 'Swag: USB drives' },
-    { src: '/collage/thedaybitflipwasking.jpg', label: 'The day Bitflip was king' },
-  ],
-  [
-    { src: '/collage/bitflipsign021111.jpg', label: 'Office sign, 2011' },
-    { src: '/collage/bitflipweblatestwork.jpg', label: 'Latest work grid' },
-    { src: '/collage/bitflipteamxmas.jpg', label: 'Team holiday card' },
-    { src: '/collage/toolgraphicbitflip.jpg', label: 'Tool graphics' },
-    { src: '/collage/bitflip_businesscard-14.jpg', label: 'Card exploration' },
-    { src: '/collage/bitflip_holidaycard_front_final.jpg', label: 'Holiday card' },
-  ],
-]
+// Round-robin so neighboring columns get different clients and rhythms.
+const columns: CollageSite[][] = Array.from({ length: COLUMNS }, () => [])
+sites.forEach((s, i) => columns[i % COLUMNS].push(s))
 
 export default function WorkCollage() {
   const wall = useRef<HTMLDivElement>(null)
@@ -49,10 +22,14 @@ export default function WorkCollage() {
   }
 
   return (
-    <section className="collage" onPointerMove={onMove} aria-label="Archive of Bitflip work over 17 years">
+    <section
+      className="collage"
+      onPointerMove={onMove}
+      aria-label={`Archive of ${sites.length} sites shipped by Bitflip`}
+    >
       <div className="collage-head">
-        <p className="mono">The archive</p>
-        <h2>17 years, one wall</h2>
+        <p className="mono">The archive — every site we shipped</p>
+        <h2>{sites.length} sites, one wall</h2>
       </div>
       <div className="collage-stage">
         <div className="collage-wall" ref={wall}>
@@ -60,8 +37,12 @@ export default function WorkCollage() {
             <div key={i} className={`collage-col collage-col-${i}`}>
               {/* content duplicated for a seamless loop */}
               {[...col, ...col].map((p, j) => (
-                <figure key={`${p.src}-${j}`} className="collage-item" aria-hidden={j >= col.length}>
-                  <img src={p.src} alt={j < col.length ? p.label : ''} loading="lazy" />
+                <figure
+                  key={`${p.src}-${j}`}
+                  className="collage-item"
+                  aria-hidden={j >= col.length}
+                >
+                  <img src={p.src} alt={j < col.length ? p.label : ''} decoding="async" />
                   <figcaption className="mono">{p.label}</figcaption>
                 </figure>
               ))}
