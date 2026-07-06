@@ -1,5 +1,6 @@
 import { useRef, type PointerEvent } from 'react'
 import { sites, type CollageSite } from '../data/collageSites'
+import { asset } from '../lib/asset'
 import './WorkCollage.css'
 
 const COLUMNS = 6
@@ -42,7 +43,7 @@ export default function WorkCollage() {
                   className="collage-item"
                   aria-hidden={j >= col.length}
                 >
-                  <img src={p.src} alt={j < col.length ? p.label : ''} decoding="async" />
+                  <img src={asset(p.src)} alt={j < col.length ? p.label : ''} decoding="async" />
                   <figcaption className="mono">{p.label}</figcaption>
                 </figure>
               ))}

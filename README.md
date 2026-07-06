@@ -31,13 +31,25 @@ npm install
 npm run dev
 ```
 
-## Deploy to Hostinger
+## Deploy
 
 This site is fully static — no Node server needed in production.
 
-1. `npm run build` → output lands in `dist/`
-2. **Option A (Git deploy):** in hPanel → Websites → Advanced → Git, connect this repo, set build command `npm install && npm run build` and publish directory `dist`
-3. **Option B (manual):** upload the contents of `dist/` to `public_html` via hPanel File Manager or FTP
-4. Point the `bitfliptech.ai` domain at the site and enable Hostinger's free SSL
+**Staging (automatic):** every push to `main` deploys to GitHub Pages via
+`.github/workflows/deploy-pages.yml` → https://bitflipper1.github.io/bitfliptech-ai/
 
-No Hostinger AI Builder / Horizons layer is required — this codebase already is the custom layer, and Hostinger's AI visual tools (image generation, upscaling, heatmaps) can still be used for production assets.
+**Production (Hostinger), pick one:**
+
+1. **GitHub Action (recommended):** add repo secrets `HOSTINGER_FTP_SERVER`,
+   `HOSTINGER_FTP_USERNAME`, `HOSTINGER_FTP_PASSWORD` (from hPanel → Files → FTP
+   Accounts), then run the "Deploy to Hostinger (FTP)" workflow from the Actions tab.
+2. **hPanel Git deploy:** Websites → Advanced → Git, connect this repo, build command
+   `npm install && npm run build`, publish directory `dist`.
+3. **Manual:** `npm run build`, then upload the contents of `dist/` to `public_html`.
+
+Then point the `bitfliptech.ai` domain at the site and enable Hostinger's free SSL.
+The `.htaccess` in `public/` ships with the build so deep links work on Apache.
+
+No Hostinger AI Builder / Horizons layer is required — this codebase already is the
+custom layer, and Hostinger's AI visual tools (image generation, upscaling, heatmaps)
+can still be used for production assets.

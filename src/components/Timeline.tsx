@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { timeline } from '../data/content'
+import { asset } from '../lib/asset'
 import './Timeline.css'
 
 export default function Timeline() {
@@ -46,7 +47,7 @@ export default function Timeline() {
             <p className="era-blurb">{era.blurb}</p>
             {era.image && (
               <figure className="era-figure">
-                <img src={era.image.src} alt={era.image.alt} loading="lazy" />
+                <img src={asset(era.image.src)} alt={era.image.alt} loading="lazy" />
                 <figcaption className="mono">{era.image.alt}</figcaption>
               </figure>
             )}
