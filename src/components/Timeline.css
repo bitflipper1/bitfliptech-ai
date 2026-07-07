@@ -109,3 +109,58 @@
   color: var(--cyan);
   border-color: rgba(180, 245, 66, 0.5);
 }
+
+.chip-has-shot {
+  position: relative;
+  border-color: rgba(34, 224, 255, 0.35) !important;
+}
+
+.chip-btn {
+  all: unset;
+  cursor: pointer;
+  border-bottom: 1px dotted var(--cyan);
+}
+
+.chip-has-shot:hover,
+.chip-has-shot:focus-within {
+  color: var(--cyan);
+}
+
+.chip-pop {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  z-index: 5;
+  display: block;
+  width: 240px;
+  padding: 6px;
+  background: var(--bg-raise);
+  border: 1px solid rgba(34, 224, 255, 0.45);
+  border-radius: 4px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+  animation: pop-in 0.18s ease;
+  pointer-events: none;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.chip-pop img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.chip-pop .mono {
+  display: block;
+  padding: 6px 4px 2px;
+  font-size: 0.6rem;
+  color: var(--ink);
+  text-transform: none;
+}

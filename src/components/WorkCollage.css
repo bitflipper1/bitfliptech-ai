@@ -19,6 +19,17 @@
   margin-top: 0.9rem;
 }
 
+.collage-more {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--ink-dim);
+  transition: color 0.2s ease;
+}
+
+.collage-more:hover {
+  color: var(--acid);
+}
+
 .collage-stage {
   position: relative;
   height: 620px;

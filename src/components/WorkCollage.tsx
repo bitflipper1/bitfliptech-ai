@@ -1,12 +1,15 @@
 import { useRef, type PointerEvent } from 'react'
-import { sites, type CollageSite } from '../data/collageSites'
+import { Link } from 'react-router-dom'
+import { archive, type ArchiveItem } from '../data/archive'
 import { asset } from '../lib/asset'
 import './WorkCollage.css'
 
 const COLUMNS = 6
 
-// Round-robin so neighboring columns get different clients and rhythms.
-const columns: CollageSite[][] = Array.from({ length: COLUMNS }, () => [])
+// Wall shows a curated subset (flagged in the archive data) so each drifting
+// column stays under GPU texture limits; the full set lives at /archive.
+const sites = archive.filter((i) => i.wall)
+const columns: ArchiveItem[][] = Array.from({ length: COLUMNS }, () => [])
 sites.forEach((s, i) => columns[i % COLUMNS].push(s))
 
 export default function WorkCollage() {
@@ -29,8 +32,11 @@ export default function WorkCollage() {
       aria-label={`Archive of ${sites.length} sites shipped by Bitflip`}
     >
       <div className="collage-head">
-        <p className="mono">The archive — every site we shipped</p>
-        <h2>{sites.length} sites, one wall</h2>
+        <p className="mono">The archive</p>
+        <h2>17 years, one wall</h2>
+        <Link to="/archive" className="mono collage-more">
+          browse all {archive.length} shots →
+        </Link>
       </div>
       <div className="collage-stage">
         <div className="collage-wall" ref={wall}>
@@ -43,8 +49,8 @@ export default function WorkCollage() {
                   className="collage-item"
                   aria-hidden={j >= col.length}
                 >
-                  <img src={asset(p.src)} alt={j < col.length ? p.label : ''} decoding="async" />
-                  <figcaption className="mono">{p.label}</figcaption>
+                  <img src={asset(p.src)} alt={j < col.length ? p.site : ''} decoding="async" />
+                  <figcaption className="mono">{p.site}</figcaption>
                 </figure>
               ))}
             </div>

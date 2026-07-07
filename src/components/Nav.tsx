@@ -4,6 +4,7 @@ import './Nav.css'
 
 const links = [
   { label: 'Lab', to: '/lab' },
+  { label: 'Archive', to: '/archive' },
   { label: 'Services', to: '/services' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },

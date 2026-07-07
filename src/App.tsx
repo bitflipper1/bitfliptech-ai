@@ -5,6 +5,7 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import LabPage from './pages/LabPage'
+import ArchivePage from './pages/ArchivePage'
 import ServicesPage from './pages/ServicesPage'
 import About from './pages/About'
 import ContactPage from './pages/ContactPage'
@@ -40,6 +41,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/lab" element={<LabPage />} />
+        <Route path="/archive" element={<ArchivePage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactPage />} />
