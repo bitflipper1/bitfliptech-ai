@@ -46,6 +46,25 @@
   color: var(--acid);
 }
 
+.nav-console {
+  background: none;
+  border: 1px solid rgba(34, 224, 255, 0.35);
+  border-radius: 3px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-console:hover {
+  border-color: var(--acid);
+  color: var(--acid);
+  box-shadow: 0 0 12px rgba(180, 245, 66, 0.25);
+}
+
 @media (max-width: 640px) {
   .nav-links {
     gap: 1rem;

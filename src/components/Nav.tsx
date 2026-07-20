@@ -27,6 +27,13 @@ export default function Nav() {
             {l.label}
           </NavLink>
         ))}
+        <button
+          className="nav-console mono"
+          onClick={() => window.dispatchEvent(new CustomEvent('bitflip:console'))}
+          aria-label="Open the console"
+        >
+          ⌘K console
+        </button>
       </div>
     </nav>
   )

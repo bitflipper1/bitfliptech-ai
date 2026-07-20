@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import Console from './components/Console'
 import Home from './pages/Home'
 import LabPage from './pages/LabPage'
 import ArchivePage from './pages/ArchivePage'
@@ -38,6 +39,7 @@ export default function App() {
     <>
       <ScrollToTop />
       <Nav />
+      <Console />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/lab" element={<LabPage />} />

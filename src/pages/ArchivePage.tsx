@@ -8,24 +8,38 @@ import './ArchivePage.css'
 const PAGE = 24
 
 export default function ArchivePage() {
-  const [cat, setCat] = useState<string>('all')
   const [count, setCount] = useState(PAGE)
   const [lightbox, setLightbox] = useState<ArchiveItem | null>(null)
   const [showFlip, setShowFlip] = useState(false)
   const sentinel = useRef<HTMLDivElement>(null)
   const [params, setParams] = useSearchParams()
   const strataMode = params.get('view') === 'strata'
+  const cat = params.get('cat') ?? 'all'
+  const year = params.get('year')
+  const q = (params.get('q') ?? '').toLowerCase()
 
   const filtered = useMemo(
-    () => (cat === 'all' ? archive : archive.filter((i) => i.cat === cat)),
-    [cat]
+    () =>
+      archive.filter(
+        (i) =>
+          (cat === 'all' || i.cat === cat) &&
+          (!year || i.year === Number(year)) &&
+          (!q || i.site.toLowerCase().includes(q))
+      ),
+    [cat, year, q]
   )
   const shown = filtered.slice(0, count)
 
-  const pick = useCallback((next: string) => {
-    setCat(next)
-    setCount(PAGE)
-  }, [])
+  const pick = useCallback(
+    (next: string) => {
+      setParams(next === 'all' ? {} : { cat: next })
+      setCount(PAGE)
+    },
+    [setParams]
+  )
+
+  // reset pagination when console deep-links change the filter
+  useEffect(() => setCount(PAGE), [cat, year, q])
 
   // infinite scroll: reveal the next page when the sentinel nears the viewport.
   // IntersectionObserver plus a scroll/resize fallback for environments where
@@ -107,6 +121,13 @@ export default function ArchivePage() {
         <>
 
 
+        {(year || q) && (
+          <div className="arc-filters">
+            <button className="arc-chip arc-chip-on" onClick={() => setParams(cat === 'all' ? {} : { cat })}>
+              ✕ {[q, year].filter(Boolean).join(' · ')}
+            </button>
+          </div>
+        )}
         <div className="arc-filters" role="group" aria-label="Filter archive by category">
           <button
             className={`arc-chip ${cat === 'all' ? 'arc-chip-on' : ''}`}

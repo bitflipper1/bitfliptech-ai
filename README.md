@@ -31,6 +31,21 @@ npm install
 npm run dev
 ```
 
+## The Console
+
+`⌘K` (or `Ctrl+K`, or the nav button) opens the BitFlip Console anywhere on the
+site. Two tiers:
+
+- **Local protocols** (no backend): archive queries ("restaurant sites from 2012",
+  "fuel pizza"), `services`, `process`, `story`, `flips`, `strata`, `go <page>`,
+  and `start project` (drafts an inquiry email). All deterministic, instant, free.
+- **AI core** (optional): free-form questions answered by Claude via a Cloudflare
+  Worker so the API key never reaches the browser. Deploy
+  [worker/console-worker.js](worker/console-worker.js) (instructions in the file,
+  ~10 minutes), then set the worker URL as the `CONSOLE_ENDPOINT` repo variable
+  (GitHub → Settings → Secrets and variables → Actions → Variables) and redeploy.
+  Until then the console reports "AI core: offline — local protocols active."
+
 ## Deploy
 
 This site is fully static — no Node server needed in production.
