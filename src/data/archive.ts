@@ -4,6 +4,8 @@ export interface ArchiveItem {
   cat: string
   year: number
   wall?: boolean
+  /** Path to the AI-era 2026 reinterpretation ("The Flip") */
+  flip?: string
 }
 
 export const categories: Record<string, string> = {
@@ -29,7 +31,7 @@ export const archive: ArchiveItem[] = [
   { src: "/shots/dilworth-church.jpg", site: "Dilworth United Methodist", cat: "community", year: 2011, wall: true },
   { src: "/shots/fitzgeralds-banner.jpg", site: "Fitzgeralds banner", cat: "restaurants", year: 2011 },
   { src: "/shots/fitzgeralds-email.jpg", site: "Fitzgeralds email", cat: "email", year: 2011 },
-  { src: "/shots/fitzgeralds.jpg", site: "Fitzgeralds Irish Pub", cat: "restaurants", year: 2011, wall: true },
+  { src: "/shots/fitzgeralds.jpg", site: "Fitzgeralds Irish Pub", cat: "restaurants", year: 2011, wall: true, flip: "/shots/fitzgeralds-flip.jpg" },
   { src: "/shots/fitzgeralds-live.jpg", site: "Fitzgeralds Irish Pub (live)", cat: "restaurants", year: 2011 },
   { src: "/shots/fitzgeralds-portfolio.jpg", site: "Fitzgeralds portfolio shot", cat: "restaurants", year: 2011 },
   { src: "/shots/kennedys-live.jpg", site: "Kennedy's (live, 2011)", cat: "restaurants", year: 2011, wall: true },
@@ -45,7 +47,7 @@ export const archive: ArchiveItem[] = [
   { src: "/shots/buckhead-saloon.jpg", site: "Buckhead Saloon", cat: "restaurants", year: 2012 },
   { src: "/shots/dillingers.jpg", site: "Dillinger Taproom", cat: "restaurants", year: 2012, wall: true },
   { src: "/shots/dillingers-email.jpg", site: "Dillinger Taproom email", cat: "email", year: 2012 },
-  { src: "/shots/fuel-pizza.jpg", site: "FUEL Pizza", cat: "restaurants", year: 2012 },
+  { src: "/shots/fuel-pizza.jpg", site: "FUEL Pizza", cat: "restaurants", year: 2012, flip: "/shots/fuel-pizza-flip.jpg" },
   { src: "/shots/fuel-pizza-live.jpg", site: "FUEL Pizza (live)", cat: "restaurants", year: 2012, wall: true },
   { src: "/shots/fuel-design2.jpg", site: "FUEL Pizza design comp", cat: "restaurants", year: 2012 },
   { src: "/shots/fuel-email.jpg", site: "FUEL Pizza email", cat: "email", year: 2012 },
@@ -68,7 +70,7 @@ export const archive: ArchiveItem[] = [
   { src: "/shots/t1-tapas-cnn.jpg", site: "T1 Tapas CNN coverage", cat: "restaurants", year: 2012 },
   { src: "/shots/bitflip-king.jpg", site: "The day Bitflip was king", cat: "product", year: 2012 },
   { src: "/shots/town-tavern.jpg", site: "Town Tavern", cat: "restaurants", year: 2012, wall: true },
-  { src: "/shots/whisky-river.jpg", site: "Whisky River", cat: "restaurants", year: 2012 },
+  { src: "/shots/whisky-river.jpg", site: "Whisky River", cat: "restaurants", year: 2012, flip: "/shots/whisky-river-flip.jpg" },
   { src: "/shots/auto-150.jpg", site: "150 Auto Sales & Repair", cat: "business", year: 2013, wall: true },
   { src: "/shots/s-tryon-1927.jpg", site: "1927 S Tryon", cat: "business", year: 2013 },
   { src: "/shots/first-metropolitan.jpg", site: "1st Metropolitan Mortgage", cat: "business", year: 2013, wall: true },

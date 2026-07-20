@@ -9,6 +9,7 @@ export default function ArchivePage() {
   const [cat, setCat] = useState<string>('all')
   const [count, setCount] = useState(PAGE)
   const [lightbox, setLightbox] = useState<ArchiveItem | null>(null)
+  const [showFlip, setShowFlip] = useState(false)
   const sentinel = useRef<HTMLDivElement>(null)
 
   const filtered = useMemo(
@@ -61,6 +62,10 @@ export default function ArchivePage() {
         <div className="section-head">
           <p className="mono">The full archive — {archive.length} shots, 2009 → now</p>
           <h2>Every pixel we shipped</h2>
+          <p className="arc-flip-note">
+            Tiles marked <span className="mono arc-flip-mark">⟳ 2026</span> carry a Flip —
+            hover to see what BitFlip would ship for that client today.
+          </p>
         </div>
 
         <div className="arc-filters" role="group" aria-label="Filter archive by category">
@@ -89,15 +94,31 @@ export default function ArchivePage() {
           {shown.map((item) => (
             <button
               key={item.src}
-              className="arc-tile"
-              onClick={() => setLightbox(item)}
-              aria-label={`${item.site}, ${item.year}`}
+              className={`arc-tile ${item.flip ? 'arc-tile-flippable' : ''}`}
+              onClick={() => {
+                setShowFlip(false)
+                setLightbox(item)
+              }}
+              aria-label={`${item.site}, ${item.year}${item.flip ? ' — has 2026 flip' : ''}`}
             >
-              <img src={asset(item.src)} alt={item.site} loading="lazy" decoding="async" />
+              {item.flip ? (
+                <span className="flip-inner">
+                  <span className="flip-face">
+                    <img src={asset(item.src)} alt={item.site} loading="lazy" decoding="async" />
+                  </span>
+                  <span className="flip-face flip-back">
+                    <img src={asset(item.flip)} alt={`${item.site}, 2026 flip`} loading="lazy" decoding="async" />
+                    <span className="mono flip-back-tag">{item.site} · 2026 flip</span>
+                  </span>
+                </span>
+              ) : (
+                <img src={asset(item.src)} alt={item.site} loading="lazy" decoding="async" />
+              )}
               <span className="arc-meta">
                 <span className="arc-site">{item.site}</span>
                 <span className="mono arc-year">{item.year}</span>
               </span>
+              {item.flip && <span className="mono arc-flip-badge">⟳ 2026</span>}
             </button>
           ))}
         </div>
@@ -121,13 +142,23 @@ export default function ArchivePage() {
           onClick={() => setLightbox(null)}
         >
           <figure onClick={(e) => e.stopPropagation()}>
-            <img src={asset(lightbox.src)} alt={lightbox.site} />
+            <img
+              src={asset(showFlip && lightbox.flip ? lightbox.flip : lightbox.src)}
+              alt={showFlip ? `${lightbox.site}, 2026 flip` : lightbox.site}
+            />
             <figcaption>
               <span>{lightbox.site}</span>
               <span className="mono">
-                {categories[lightbox.cat]} · {lightbox.year}
+                {showFlip && lightbox.flip
+                  ? '2026 flip — AI-era concept by bitfliptech.ai'
+                  : `${categories[lightbox.cat]} · ${lightbox.year}`}
               </span>
             </figcaption>
+            {lightbox.flip && (
+              <button className="btn btn-solid arc-flip-toggle" onClick={() => setShowFlip((f) => !f)}>
+                {showFlip ? `⟲ back to ${lightbox.year}` : '⟳ see the 2026 flip'}
+              </button>
+            )}
             <button className="arc-close mono" onClick={() => setLightbox(null)}>
               esc / close ×
             </button>

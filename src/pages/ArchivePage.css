@@ -1,3 +1,98 @@
+.arc-flip-note {
+  margin-top: 1rem;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+
+.arc-flip-mark {
+  color: var(--acid);
+}
+
+.arc-tile-flippable {
+  perspective: 900px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.arc-tile-flippable:hover .flip-inner,
+.arc-tile-flippable:focus-visible .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+.flip-back img {
+  filter: none !important;
+  height: 100%;
+}
+
+.flip-back-tag {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 0.8rem 0.5rem;
+  font-size: 0.6rem;
+  color: var(--acid);
+  background: linear-gradient(transparent, rgba(5, 5, 5, 0.92));
+}
+
+.arc-tile-flippable:hover .arc-meta,
+.arc-tile-flippable:focus-visible .arc-meta {
+  opacity: 0;
+}
+
+.arc-meta {
+  transition: opacity 0.3s ease;
+}
+
+.arc-flip-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--acid);
+  border-radius: 2px;
+  padding: 0.25rem 0.5rem;
+  backface-visibility: hidden;
+}
+
+.arc-flip-toggle {
+  position: absolute;
+  bottom: 3.2rem;
+  right: 0.8rem;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner {
+    transition: none;
+  }
+}
+
 .arc-filters {
   display: flex;
   flex-wrap: wrap;
