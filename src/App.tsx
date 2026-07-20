@@ -7,6 +7,8 @@ import Console from './components/Console'
 import Home from './pages/Home'
 import LabPage from './pages/LabPage'
 import ArchivePage from './pages/ArchivePage'
+import SensorSim from './pages/SensorSim'
+import SafetySim from './pages/SafetySim'
 import ServicesPage from './pages/ServicesPage'
 import About from './pages/About'
 import ContactPage from './pages/ContactPage'
@@ -43,6 +45,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/lab" element={<LabPage />} />
+        <Route path="/lab/sensors" element={<SensorSim />} />
+        <Route path="/lab/safety" element={<SafetySim />} />
         <Route path="/archive" element={<ArchivePage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/about" element={<About />} />

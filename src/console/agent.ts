@@ -76,6 +76,8 @@ const HELP: ConsoleLine[] = [
   { kind: 'out', text: '  strata            — the archive as design archaeology' },
   { kind: 'out', text: '  start project     — draft an inquiry' },
   { kind: 'out', text: '  go <page>         — lab / archive / services / about / contact' },
+  { kind: 'out', text: '  run sensors       — live telemetry sim (catch the anomalies)' },
+  { kind: 'out', text: '  run safety        — the copilot incident scenario' },
   { kind: 'out', text: '  clear · exit' },
   { kind: 'out', text: 'Or just ask a question — the AI core handles free-form.' },
 ]
@@ -99,10 +101,18 @@ export function runLocal(input: string): AgentResult {
 
   if (cmd === 'help' || cmd === '?' || cmd === 'commands' || cmd === 'man') return { lines: HELP }
 
-  const goMatch = cmd.match(/^(?:go|open|cd)\s+\/?(\w+)/)
+  const goMatch = cmd.match(/^(?:go|open|cd|run)\s+\/?([\w/]+)/)
   if (goMatch) {
-    const page = goMatch[1] === 'home' ? '' : goMatch[1]
-    if (['', 'lab', 'archive', 'services', 'about', 'contact'].includes(page)) {
+    const aliases: Record<string, string> = {
+      home: '',
+      sensors: 'lab/sensors',
+      sensor: 'lab/sensors',
+      dashboard: 'lab/sensors',
+      safety: 'lab/safety',
+      copilot: 'lab/safety',
+    }
+    const page = aliases[goMatch[1]] ?? goMatch[1]
+    if (['', 'lab', 'archive', 'services', 'about', 'contact', 'lab/sensors', 'lab/safety'].includes(page)) {
       return {
         lines: [{ kind: 'sys', text: `→ navigating to /${page}` }],
         navigate: `/${page}`,

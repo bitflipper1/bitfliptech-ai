@@ -55,16 +55,33 @@ export const services = [
   },
 ]
 
-export const lab = [
+export interface LabCard {
+  title: string
+  tag: string
+  blurb: string
+  /** Route of the operable simulation; absent = still in fabrication */
+  run?: string
+}
+
+export const lab: LabCard[] = [
   {
-    title: 'AI Job Automation Tool',
-    tag: 'agentic workflow',
-    blurb: 'An agent pipeline that turns repetitive job tasks into supervised automations.',
+    title: 'Sensor Dashboard',
+    tag: 'data visualization',
+    blurb:
+      'Live simulated telemetry across four channels. Anomalies inject at random — catch them before they clear.',
+    run: '/lab/sensors',
   },
   {
     title: 'Industrial Safety Copilot',
     tag: 'safety-critical ux',
-    blurb: 'An AI assistant concept for high-risk environments where confusion costs lives.',
+    blurb:
+      'A scripted incident on conveyor line 4. Run it and watch the copilot refuse the unsafe shortcut.',
+    run: '/lab/safety',
+  },
+  {
+    title: 'AI Job Automation Tool',
+    tag: 'agentic workflow',
+    blurb: 'An agent pipeline that turns repetitive job tasks into supervised automations.',
   },
   {
     title: 'Command + Control Interface',
@@ -80,11 +97,6 @@ export const lab = [
     title: 'Accessibility Pattern Library',
     tag: 'design system',
     blurb: 'WCAG-minded components, focus states, and reduced-motion patterns that ship.',
-  },
-  {
-    title: 'Sensor Dashboard Concepts',
-    tag: 'data visualization',
-    blurb: 'Live telemetry, anomaly surfacing, and dense data made legible.',
   },
 ]
 

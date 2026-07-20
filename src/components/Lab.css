@@ -102,8 +102,34 @@
   margin-top: 1.4rem;
   color: var(--ink-dim);
   transition: color 0.2s ease;
+  position: relative;
 }
 
-.lab-card:hover .lab-cta {
+.lab-cta-live {
   color: var(--acid);
+  border-bottom: 1px dotted rgba(180, 245, 66, 0.5);
+}
+
+.lab-card-live {
+  border-color: rgba(180, 245, 66, 0.35);
+}
+
+.lab-card:hover .lab-cta-live {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.lab-cta-fab {
+  cursor: default;
+}
+
+.lab-live-dot,
+.lab-live-mark {
+  color: var(--acid);
+}
+
+.lab-note {
+  margin-top: 1rem;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
 }

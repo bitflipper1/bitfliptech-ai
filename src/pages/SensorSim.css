@@ -1,0 +1,202 @@
+.sim-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.sim-head h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0.6rem 0;
+}
+
+.sim-back {
+  color: var(--ink-dim);
+}
+
+.sim-back:hover {
+  color: var(--cyan);
+}
+
+.sim-sub {
+  color: var(--ink-dim);
+  line-height: 1.65;
+  max-width: 46em;
+}
+
+.sim-sub b {
+  color: var(--ink);
+}
+
+.sim-score {
+  display: flex;
+  gap: 1.4rem;
+  align-items: baseline;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.9rem 1.2rem;
+}
+
+.sim-score b {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.good {
+  color: var(--acid) !important;
+}
+
+.bad {
+  color: #ff7a6b !important;
+}
+
+.sim-reset {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--ink-dim);
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+.sim-reset:hover {
+  color: var(--acid);
+  border-color: var(--acid);
+}
+
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.sensor-card {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg-raise);
+  padding: 1.1rem 1.1rem 1rem;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sensor-alarm {
+  border-color: rgba(255, 122, 107, 0.7);
+  box-shadow: 0 0 24px rgba(255, 122, 107, 0.12), inset 0 1px 0 rgba(255, 122, 107, 0.4);
+}
+
+.sensor-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.sensor-label {
+  font-size: 0.62rem;
+  color: var(--ink-dim);
+}
+
+.sensor-value {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.sensor-value small {
+  color: var(--ink-dim);
+  font-size: 0.6rem;
+}
+
+.sensor-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: rgba(5, 5, 5, 0.5);
+  border: 1px solid rgba(245, 242, 236, 0.06);
+  border-radius: 2px;
+}
+
+.sensor-band {
+  fill: rgba(34, 224, 255, 0.07);
+}
+
+.sensor-line {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 1.4;
+}
+
+.sensor-alarm .sensor-line {
+  stroke: #ff7a6b;
+}
+
+.sensor-flag {
+  margin-top: 0.8rem;
+  width: 100%;
+  background: none;
+  border: 1px solid rgba(180, 245, 66, 0.4);
+  border-radius: 2px;
+  color: var(--acid);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sensor-flag:hover {
+  background: var(--acid);
+  color: var(--bg);
+}
+
+.sim-log {
+  margin-top: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(5, 5, 5, 0.6);
+  padding: 1rem 1.2rem;
+  min-height: 8em;
+}
+
+.sim-log-line {
+  font-size: 0.7rem;
+  line-height: 1.9;
+  color: var(--ink-dim);
+}
+
+.sim-log-line span {
+  color: var(--cyan);
+  margin-right: 0.6rem;
+}
+
+.sim-log-good {
+  color: var(--acid);
+}
+
+.sim-log-bad {
+  color: #ff7a6b;
+}
+
+.sim-fine {
+  margin-top: 2rem;
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 60em;
+}
+
+.sim-fine a {
+  color: var(--cyan);
+}
+
+.sim-fine a:hover {
+  color: var(--acid);
+}
