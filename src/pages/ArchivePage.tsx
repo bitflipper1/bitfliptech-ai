@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { archive, categories, type ArchiveItem } from '../data/archive'
 import { asset } from '../lib/asset'
+import Strata from '../components/Strata'
 import './ArchivePage.css'
 
 const PAGE = 24
@@ -11,6 +13,8 @@ export default function ArchivePage() {
   const [lightbox, setLightbox] = useState<ArchiveItem | null>(null)
   const [showFlip, setShowFlip] = useState(false)
   const sentinel = useRef<HTMLDivElement>(null)
+  const [params, setParams] = useSearchParams()
+  const strataMode = params.get('view') === 'strata'
 
   const filtered = useMemo(
     () => (cat === 'all' ? archive : archive.filter((i) => i.cat === cat)),
@@ -61,12 +65,47 @@ export default function ArchivePage() {
       <section className="section">
         <div className="section-head">
           <p className="mono">The full archive — {archive.length} shots, 2009 → now</p>
-          <h2>Every pixel we shipped</h2>
-          <p className="arc-flip-note">
-            Tiles marked <span className="mono arc-flip-mark">⟳ 2026</span> carry a Flip —
-            hover to see what BitFlip would ship for that client today.
-          </p>
+          <h2>{strataMode ? 'Design archaeology' : 'Every pixel we shipped'}</h2>
+          {!strataMode && (
+            <p className="arc-flip-note">
+              Tiles marked <span className="mono arc-flip-mark">⟳ 2026</span> carry a Flip —
+              hover to see what BitFlip would ship for that client today.
+            </p>
+          )}
+          {strataMode && (
+            <p className="arc-flip-note">
+              Seventeen years of the web, read like sediment — every era annotated, every
+              specimen shipped by BitFlip.
+            </p>
+          )}
+          <div className="arc-modes" role="group" aria-label="Archive view mode">
+            <button
+              className={`arc-chip ${!strataMode ? 'arc-chip-on' : ''}`}
+              onClick={() => setParams({})}
+            >
+              ⊞ Grid
+            </button>
+            <button
+              className={`arc-chip ${strataMode ? 'arc-chip-on' : ''}`}
+              onClick={() => setParams({ view: 'strata' })}
+            >
+              ≣ Strata
+            </button>
+          </div>
         </div>
+
+        {strataMode && (
+          <Strata
+            onOpen={(item) => {
+              setShowFlip(false)
+              setLightbox(item)
+            }}
+          />
+        )}
+
+        {!strataMode && (
+        <>
+
 
         <div className="arc-filters" role="group" aria-label="Filter archive by category">
           <button
@@ -130,6 +169,8 @@ export default function ArchivePage() {
         )}
         {shown.length >= filtered.length && (
           <p className="arc-end mono">end of archive — {filtered.length} shots</p>
+        )}
+        </>
         )}
       </section>
 
